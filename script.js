@@ -1,20 +1,23 @@
 document.getElementById("searchBtn").addEventListener("click", () => {
     const searchInput = document.getElementById("searchInput").value;
     const inputValue = parseInt(searchInput);
+    document.getElementById("searchInput").value = "";
+    
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchInput}`)
         .then(res => res.json())
         .then(data => searchMeals(data.meals))
         .catch(err =>{
             document.getElementById("meals").innerHTML = `
-                <p class="error"> 404. ${err.message}</p>                
-            `;           
+                <p id="errorId" class="error"> 404. ${err.message}</p>                                            
+            `; 
+            document.getElementById("mealInfo").style.display = "none";        
         })
 })
 
-const searchMeals = meals => {
+const searchMeals = meals => {    
     const mealsDiv = document.getElementById("meals");
     meals.forEach(meal => {
-
+        
         const mealList = document.createElement('div');
         mealList.className = "mealsStyle"
         const mealInfo = ` 
@@ -28,20 +31,20 @@ const searchMeals = meals => {
             </div>        
        `;
         mealList.innerHTML = mealInfo;
-        mealsDiv.appendChild(mealList)    
-        
+        mealsDiv.appendChild(mealList)   
+
+        document.getElementById("errorId").innerHTML = "";
+        document.getElementById("mealInfo").style.display = "block"
     });
 }
 const showMealDetails = mealName => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
     fetch(url)
     .then(res => res.json())
-    .then(data => mealInformation(data.meals[0]))    
+    .then(data => mealInformation(data.meals[0]))   
 }
 
 const mealInformation = info => {
-    // <input type="checkbox" name="" id=""/>
-    console.log(info)
     const mealInfo = document.getElementById("mealInfo");
     mealInfo.innerHTML = `
         <div class="mealInfoShow">
