@@ -1,0 +1,35 @@
+body{
+    background-color:lightgray
+}
+#searchDiv{
+    margin: 10% 30% 0 35%;
+}
+#searchInput{
+    border: none;
+    background-color:white;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#searchBtn{
+    background-color:#8a2be2;
+    color: white;
+}
+.error{
+    color: red;
+    margin-left: 35%;
+    margin-top: 50px;
+}
+.mealsStyle{
+    display: inline-block;
+    margin: 30px 10px 10px 50px;
+}
+.mealInfoShow{
+    width: 45%;
+    margin-left: 25%;
+    margin-top: 50px;
+    background-color:white;
+    box-shadow: 10px 10px 40px lightgray;
+    border-radius: 15px;
+    padding: 20px;
+}
