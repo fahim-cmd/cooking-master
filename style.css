@@ -1,12 +1,8 @@
-body{
-    background-color:lightgray
-}
 #searchDiv{
     margin: 10% 30% 0 35%;
 }
 #searchInput{
-    border: none;
-    background-color:white;
+    background-color: lightgray;
     border: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -32,4 +28,7 @@ body{
     box-shadow: 10px 10px 40px lightgray;
     border-radius: 15px;
     padding: 20px;
+}
+.card {
+    box-shadow: 15px 15px 50px lightgray;
 }

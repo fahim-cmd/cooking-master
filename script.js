@@ -14,14 +14,16 @@ document.getElementById("searchBtn").addEventListener("click", () => {
         })
 })
 
+
+//get meals
 const searchMeals = meals => {    
     const mealsDiv = document.getElementById("meals");
-    meals.forEach(meal => {
-        
+
+    meals.forEach(meal => {        
         const mealList = document.createElement('div');
         mealList.className = "mealsStyle"
         const mealInfo = ` 
-            <div onClick="showMealDetails('${meal.strMeal}')" class="mealStyle">
+            <div onClick="showMealDetails('${meal.strMeal}')">
                 <div class="card" style="width: 18rem;">
                 <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -37,6 +39,9 @@ const searchMeals = meals => {
         document.getElementById("mealInfo").style.display = "block"
     });
 }
+
+
+//matching meal names
 const showMealDetails = mealName => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
     fetch(url)
@@ -44,11 +49,13 @@ const showMealDetails = mealName => {
     .then(data => mealInformation(data.meals[0]))   
 }
 
+
+//meals detail information
 const mealInformation = info => {
     const mealInfo = document.getElementById("mealInfo");
     mealInfo.innerHTML = `
         <div class="mealInfoShow">
-            <img class="img-fluid w-100" src="${info.strMealThumb}"/>
+            <img class="img-fluid w-100 mb-3" src="${info.strMealThumb}"/>
             <h3>${info.strMeal}</h3>
             <h6>Ingredients</h6>
                 <div>
